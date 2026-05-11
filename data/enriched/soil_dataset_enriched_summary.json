@@ -1,0 +1,11 @@
+{
+  "num_records": 9118,
+  "class_distribution": {
+    "0": 5713,
+    "1": 50821
+  },
+  "notes": [
+    "hydration_proxy_pct and richness_proxy_score are visual proxies, not lab ground truth.",
+    "Use sensor/lab/geospatial data for scientific-grade targets."
+  ]
+}

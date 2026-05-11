@@ -1,0 +1,9 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+sqlalchemy==2.0.38
+psycopg[binary]==3.2.5
+pydantic-settings==2.7.1
+numpy==2.4.4
+opencv-python==4.13.0.92
+torch==2.6.0

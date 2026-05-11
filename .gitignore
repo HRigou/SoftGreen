@@ -18,5 +18,16 @@ runs/
 *.pt
 *.onnx
 
+# JavaScript artifacts
+node_modules/
+dist/
+*.tsbuildinfo
+
+# App outputs
+backend/thinker/outputs/
+backend/storage/runs/
+backend/storage/uploads/
+backend/.env
+
 # macOS
 .DS_Store

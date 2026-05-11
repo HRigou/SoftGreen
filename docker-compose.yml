@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16
+    container_name: softgreen-db
+    environment:
+      POSTGRES_DB: softgreen
+      POSTGRES_USER: softgreen
+      POSTGRES_PASSWORD: softgreen
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+    container_name: softgreen-backend
+    environment:
+      APP_ENV: dev
+      DATABASE_URL: postgresql+psycopg://softgreen:softgreen@db:5432/softgreen
+      THINKER_MODEL_PATH: thinker/models/default.pt
+      THINKER_MODE: heuristic_v1
+      OUTPUTS_DIR: thinker/outputs
+      UPLOADS_DIR: storage/uploads
+    volumes:
+      - ./backend/thinker/outputs:/app/thinker/outputs
+      - ./backend/storage/uploads:/app/storage/uploads
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: softgreen-frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
